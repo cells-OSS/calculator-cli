@@ -1,4 +1,5 @@
 import os, sys
+import math
 
 welcomeMessage = """
 ===============WELCOME===============
@@ -7,18 +8,19 @@ welcomeMessage = """
 2 = -
 3 = *
 4 = /
-5 = findingSquare°
-6 = findingSquare Advanced°
+5 = findingSquare
+6 = Finding the given exponent of the given number
 7 = Round a Number
 8 = Find a percentage of a number
 9 = Finding the possible base and the exponent(s) of the given number
+10 = Finding the smallest possible n-th root of the given number
 
 TIP: if you want to come back to this menu at any time, just type 'back'
 
 """
 print(welcomeMessage)
 
-chooseOption = int(input("Which option would you like to choose(1/2/3/4/5/6/7/8/9)?: "))
+chooseOption = int(input("Which option would you like to choose(1/2/3/4/5/6/7/8/9/10)?: "))
 
 if chooseOption == 1:
         while True:
@@ -170,3 +172,37 @@ if chooseOption == 9:
                   break
         if not found:
             print(f"{number} cannot be expressed")
+
+if chooseOption == 10: 
+     while True:
+          num = input("Enter a number: ")
+
+          if num == "back":
+               os.execl(sys.executable, sys.executable, *sys.argv)
+          
+          nInput = input("Enter the degree of the root: ")
+
+          number = int(num)
+
+          if nInput == "back":
+               os.execl(sys.executable, sys.executable, *sys.argv)
+
+          n = int(nInput)
+
+          a = 1
+          b = number
+
+          start = round(number ** (1/n))
+
+          for i in range(start, 0, -1):
+                if number % (i ** n) == 0:
+                    a = i
+                    b = number // (i ** n)
+                    break
+
+          if b == 1:
+                print(f"{n}-th root of {number} = {a}")
+          else:
+                print(f"{n}-th root of {number} = {a} * {n}-th_root({b})")
+
+          input("press any key to continue...")
