@@ -9,13 +9,12 @@ welcomeMessage = """
 2 = -
 3 = *
 4 = /
-5 = Find a given number's multipliers
-6 = Finding the given exponent of the given number
-7 = Round a Number
-8 = Find a percentage of a number
-9 = Finding the possible base and the exponent(s) of the given number
-10 = Finding the smallest possible n-th root of the given number
-11 = Find a given number's multipliers
+5 = Finding the given exponent of the given number
+6 = Round a Number
+7 = Find a percentage of a number
+8 = Finding the possible base and the exponent(s) of the given number
+9 = Finding the smallest possible n-th root of the given number
+10 = Find a given number's multipliers
 
 TIP: if you want to come back to this menu at any time, just type 'back'
 
@@ -23,20 +22,18 @@ TIP: if you want to come back to this menu at any time, just type 'back'
 print(welcomeMessage)
 
 chooseOption = int(
-    input("Which option would you like to choose(1/2/3/4/5/6/7/8/9/10/11)?: "))
+    input("Which option would you like to choose(1/2/3/4/5/6/7/8/9/10)?: "))
 
 if chooseOption == 1:
     while True:
         firstInput = input("First number: ")
         if firstInput.lower() == "back":
-            print("Restarting script...")
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         firstNumber = float(firstInput)
 
         secondInput = input("Second number: ")
         if secondInput.lower() == "back":
-            print("Restarting script...")
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         secondNumber = float(secondInput)
@@ -47,14 +44,12 @@ if chooseOption == 2:
     while True:
         firstInput = input("First number: ")
         if firstInput.lower() == "back":
-            print("Restarting script...")
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         firstNumber = float(firstInput)
 
         secondInput = input("Second number: ")
         if secondInput.lower() == "back":
-            print("Restarting script...")
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         secondNumber = float(secondInput)
@@ -96,17 +91,6 @@ if chooseOption == 4:
 
 if chooseOption == 5:
     while True:
-        userInput = input("Input the number: ")
-
-        if userInput.lower() == "back":
-            print("Going back...")
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-        sqrt = float(userInput)
-        print(">", sqrt * sqrt)
-
-if chooseOption == 6:
-    while True:
         firstInput = input("Bottom: ")
 
         if firstInput.lower() == "back":
@@ -122,7 +106,7 @@ if chooseOption == 6:
         print(">", bottomNumber, "to the power of ",
               upperNumber, "is: ", bottomNumber ** upperNumber)
 
-if chooseOption == 7:
+if chooseOption == 6:
     while True:
         userInput = input("which number do you want to round?: ")
 
@@ -132,7 +116,7 @@ if chooseOption == 7:
         toRound = float(userInput)
         print(">", round(toRound))
 
-if chooseOption == 8:
+if chooseOption == 7:
     while True:
         firstInput = input("Number: ")
 
@@ -149,7 +133,7 @@ if chooseOption == 8:
         Percentage = float(secondInput)
         print(">", Percentage / 100 * Number)
 
-if chooseOption == 9:
+if chooseOption == 8:
     while True:
 
         number = input("What's the Number?: ")
@@ -173,7 +157,7 @@ if chooseOption == 9:
         if not found:
             print(f"{number} cannot be expressed")
 
-if chooseOption == 10:
+if chooseOption == 9:
     while True:
         num = input("Enter a number: ")
 
@@ -205,7 +189,7 @@ if chooseOption == 10:
         else:
             print(f"{n}-th root of {number} = {a} * {n}-th_root({b})")
 
-if chooseOption == 11:
+if chooseOption == 10:
     while True:
         userInput = input("Please enter the number: ")
 
