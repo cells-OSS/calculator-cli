@@ -8,19 +8,20 @@ welcomeMessage = """
 2 = -
 3 = *
 4 = /
-5 = findingSquare
+5 = Find a given number's multipliers
 6 = Finding the given exponent of the given number
 7 = Round a Number
 8 = Find a percentage of a number
 9 = Finding the possible base and the exponent(s) of the given number
 10 = Finding the smallest possible n-th root of the given number
+11 = Find a given number's multipliers
 
 TIP: if you want to come back to this menu at any time, just type 'back'
 
 """
 print(welcomeMessage)
 
-chooseOption = int(input("Which option would you like to choose(1/2/3/4/5/6/7/8/9/10)?: "))
+chooseOption = int(input("Which option would you like to choose(1/2/3/4/5/6/7/8/9/10/11)?: "))
 
 if chooseOption == 1:
         while True:
@@ -205,4 +206,17 @@ if chooseOption == 10:
           else:
                 print(f"{n}-th root of {number} = {a} * {n}-th_root({b})")
 
-          input("press any key to continue...")
+          input("Press any key to continue...")
+if chooseOption == 11:
+     while True:
+          userInput = input("Please enter the number: ")
+          
+          if userInput == "back":
+               os.execl(sys.executable, sys.executable, *sys.argv)
+
+          num = int(userInput)
+          for answer in range(1, num + 1):
+           
+           result = num / answer
+           if result.is_integer():
+                print(result)
