@@ -20,7 +20,8 @@ TIP: if you want to come back to this menu at any time, just type 'back'
 """
 print(welcomeMessage)
 
-chooseOption = int(input("Which option would you like to choose(0/1/2/3/4/5/6)?: "))
+chooseOption = int(
+    input("Which option would you like to choose(0/1/2/3/4/5/6)?: "))
 
 if chooseOption == 0:
     operators = {
@@ -36,7 +37,7 @@ if chooseOption == 0:
     def safe_eval(expr):
 
         node = ast.parse(expr, mode="eval").body
-        
+
         def _eval(node):
             if isinstance(node, ast.BinOp):
                 if type(node.op) not in operators:
@@ -45,41 +46,39 @@ if chooseOption == 0:
                 left = _eval(node.left)
                 right = _eval(node.right)
 
-                if isinstance(node.op, ast.Div):  
+                if isinstance(node.op, ast.Div):
                     # Do quotient + remainder for "/"
                     quotient = left // right
                     remainder = left % right
                     return f"{left} ÷ {right} = {quotient} remainder {remainder}"
-                
-                return operators[type(node.op)](left, right)
-            
-            elif isinstance(node, ast.Constant): 
-                if isinstance(node.value, (int, float)):
-                    return node.value
-                else:
-                    raise ValueError("Only numbers are allowed")
 
-            
+                return operators[type(node.op)](left, right)
+
             elif isinstance(node, ast.Constant):
                 if isinstance(node.value, (int, float)):
                     return node.value
                 else:
                     raise ValueError("Only numbers are allowed")
-            
+
+            elif isinstance(node, ast.Constant):
+                if isinstance(node.value, (int, float)):
+                    return node.value
+                else:
+                    raise ValueError("Only numbers are allowed")
+
             elif isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.USub):
                 return -_eval(node.operand)
-            
+
             else:
                 raise ValueError("Expression not allowed")
-        
-        return _eval(node)
 
+        return _eval(node)
 
     while True:
         expr = input("Enter a math expression: ")
         if expr == "back":
             os.execl(sys.executable, sys.executable, *sys.argv)
-        
+
         try:
             result = safe_eval(expr)
             print(">", result)
