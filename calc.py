@@ -65,14 +65,12 @@ if chooseOption == 3:
     while True:
         firstInput = input("First number: ")
         if firstInput.lower() == "back":
-            print("Restarting script...")
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         firstNumber = float(firstInput)
 
         secondInput = input("Second number: ")
         if secondInput.lower() == "back":
-            print("Restarting script...")
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         secondNumber = float(secondInput)
@@ -83,14 +81,12 @@ if chooseOption == 4:
     while True:
         firstInput = input("First number: ")
         if firstInput.lower() == "back":
-            print("Restarting script...")
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         firstNumber = float(firstInput)
 
         secondInput = input("Second number: ")
         if secondInput.lower() == "back":
-            print("Restarting script...")
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         secondNumber = float(secondInput)
