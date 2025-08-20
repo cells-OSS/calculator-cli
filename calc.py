@@ -206,7 +206,6 @@ if chooseOption == 10:
           else:
                 print(f"{n}-th root of {number} = {a} * {n}-th_root({b})")
 
-          input("Press any key to continue...")
 if chooseOption == 11:
      while True:
           userInput = input("Please enter the number: ")
