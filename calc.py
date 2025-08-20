@@ -1,95 +1,92 @@
 import os
 import sys
 import math
+import ast
+import operator
 
 welcomeMessage = """
 ===============WELCOME===============
 
-1 = +
-2 = -
-3 = *
-4 = /
-5 = Finding the given exponent of the given number
-6 = Round a Number
-7 = Find a percentage of a number
-8 = Finding the possible base and the exponent(s) of the given number
-9 = Finding the smallest possible n-th root of the given number
-10 = Find a given number's multipliers
+0 = + - * /%
+1 = Finding the given exponent of the given number
+2 = Round a Number
+3= Find a percentage of a number
+4 = Finding the possible base and the exponent(s) of the given number
+5 = Finding the smallest possible n-th root of the given number
+6 = Find a given number's multipliers
 
 TIP: if you want to come back to this menu at any time, just type 'back'
 
 """
 print(welcomeMessage)
 
-chooseOption = int(
-    input("Which option would you like to choose(1/2/3/4/5/6/7/8/9/10)?: "))
+chooseOption = int(input("Which option would you like to choose(0/1/2/3/4/5/6)?: "))
+
+if chooseOption == 0:
+    operators = {
+        ast.Add: operator.add,
+        ast.Sub: operator.sub,
+        ast.Mult: operator.mul,
+        ast.Div: operator.floordiv,
+        ast.Mod: operator.mod,
+        ast.FloorDiv: operator.floordiv,
+        ast.Pow: operator.pow,
+    }
+
+    def safe_eval(expr):
+
+        node = ast.parse(expr, mode="eval").body
+        
+        def _eval(node):
+            if isinstance(node, ast.BinOp):
+                if type(node.op) not in operators:
+                    raise ValueError("Operator not allowed")
+
+                left = _eval(node.left)
+                right = _eval(node.right)
+
+                if isinstance(node.op, ast.Div):  
+                    # Do quotient + remainder for "/"
+                    quotient = left // right
+                    remainder = left % right
+                    return f"{left} ÷ {right} = {quotient} remainder {remainder}"
+                
+                return operators[type(node.op)](left, right)
+            
+            elif isinstance(node, ast.Constant): 
+                if isinstance(node.value, (int, float)):
+                    return node.value
+                else:
+                    raise ValueError("Only numbers are allowed")
+
+            
+            elif isinstance(node, ast.Constant):
+                if isinstance(node.value, (int, float)):
+                    return node.value
+                else:
+                    raise ValueError("Only numbers are allowed")
+            
+            elif isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.USub):
+                return -_eval(node.operand)
+            
+            else:
+                raise ValueError("Expression not allowed")
+        
+        return _eval(node)
+
+
+    while True:
+        expr = input("Enter a math expression: ")
+        if expr == "back":
+            os.execl(sys.executable, sys.executable, *sys.argv)
+        
+        try:
+            result = safe_eval(expr)
+            print(">", result)
+        except Exception as e:
+            print("Error:", e)
 
 if chooseOption == 1:
-    while True:
-        firstInput = input("First number: ")
-        if firstInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-        firstNumber = float(firstInput)
-
-        secondInput = input("Second number: ")
-        if secondInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-        secondNumber = float(secondInput)
-
-        print(">", firstNumber + secondNumber)
-
-if chooseOption == 2:
-    while True:
-        firstInput = input("First number: ")
-        if firstInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-        firstNumber = float(firstInput)
-
-        secondInput = input("Second number: ")
-        if secondInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-        secondNumber = float(secondInput)
-
-        print(">", firstNumber - secondNumber)
-
-if chooseOption == 3:
-    while True:
-        firstInput = input("First number: ")
-        if firstInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-        firstNumber = float(firstInput)
-
-        secondInput = input("Second number: ")
-        if secondInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-        secondNumber = float(secondInput)
-
-        print(">", firstNumber * secondNumber)
-
-if chooseOption == 4:
-    while True:
-        firstInput = input("First number: ")
-        if firstInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-        firstNumber = float(firstInput)
-
-        secondInput = input("Second number: ")
-        if secondInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-        secondNumber = float(secondInput)
-
-        print(">", firstNumber / secondNumber)
-        print("The remainder is:", firstNumber % secondNumber)
-
-if chooseOption == 5:
     while True:
         firstInput = input("Bottom: ")
 
@@ -106,7 +103,7 @@ if chooseOption == 5:
         print(">", bottomNumber, "to the power of ",
               upperNumber, "is: ", bottomNumber ** upperNumber)
 
-if chooseOption == 6:
+if chooseOption == 2:
     while True:
         userInput = input("which number do you want to round?: ")
 
@@ -116,7 +113,7 @@ if chooseOption == 6:
         toRound = float(userInput)
         print(">", round(toRound))
 
-if chooseOption == 7:
+if chooseOption == 3:
     while True:
         firstInput = input("Number: ")
 
@@ -133,7 +130,7 @@ if chooseOption == 7:
         Percentage = float(secondInput)
         print(">", Percentage / 100 * Number)
 
-if chooseOption == 8:
+if chooseOption == 4:
     while True:
 
         number = input("What's the Number?: ")
@@ -157,7 +154,7 @@ if chooseOption == 8:
         if not found:
             print(f"{number} cannot be expressed")
 
-if chooseOption == 9:
+if chooseOption == 5:
     while True:
         num = input("Enter a number: ")
 
@@ -189,7 +186,7 @@ if chooseOption == 9:
         else:
             print(f"{n}-th root of {number} = {a} * {n}-th_root({b})")
 
-if chooseOption == 10:
+if chooseOption == 6:
     while True:
         userInput = input("Please enter the number: ")
 
