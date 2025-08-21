@@ -88,24 +88,24 @@ while True:
                 print("Error:", e)
 
     if chooseOption == 1:
-        firstInput = input("Bottom: ")
+        firstInput = input("Base: ")
 
         if firstInput.lower() == "back":
             break
 
-        bottomNumber = float(firstInput)
-        secondInput = input("To the power of: ")
+        base = float(firstInput)
+        secondInput = input("Exponent: ")
 
-        if secondInput.lower() == ("back"):
+        if secondInput.lower() == "back":
             os.execl(sys.executable, sys.executable, *sys.argv)
 
-        upperNumber = float(secondInput)
-        print(">", bottomNumber, "to the power of ",
-            upperNumber, "is: ", bottomNumber ** upperNumber)
+        exponent = float(secondInput)
+        print(">", base, "to the power of ",
+            exponent, "is: ", base ** exponent)
 
 if chooseOption == 2:
     while True:
-        userInput = input("which number do you want to round?: ")
+        userInput = input("Which number do you want to round?: ")
 
         if userInput.lower() == "back":
             os.execl(sys.executable, sys.executable, *sys.argv)
