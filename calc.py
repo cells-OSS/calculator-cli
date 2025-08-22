@@ -77,13 +77,13 @@ while True:
             return _eval(node)
 
         while True:
-            expr = input("Enter a math expression: ")
+            expr = input("> ")
             if expr == "back":
                 os.execl(sys.executable, sys.executable, *sys.argv)
 
             try:
                 result = safe_eval(expr)
-                print(">", result)
+                print("=", result)
             except Exception as e:
                 print("Error:", e)
 
@@ -100,12 +100,11 @@ while True:
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         exponent = float(secondInput)
-        print(">", base, "to the power of ",
-            exponent, "is: ", base ** exponent)
+        print(">", base ** exponent)
 
 if chooseOption == 2:
     while True:
-        userInput = input("Which number do you want to round?: ")
+        userInput = input("> ")
 
         if userInput.lower() == "back":
             os.execl(sys.executable, sys.executable, *sys.argv)
@@ -133,7 +132,7 @@ if chooseOption == 2:
     if chooseOption == 4:
         while True:
 
-            number = input("What's the Number?: ")
+            number = input("> ")
             found = False
 
             if number == "back":
@@ -156,7 +155,7 @@ if chooseOption == 2:
 
     if chooseOption == 5:
         while True:
-            num = input("Enter a number: ")
+            num = input("Enter the number: ")
 
             if num == "back":
                 os.execl(sys.executable, sys.executable, *sys.argv)
@@ -188,7 +187,7 @@ if chooseOption == 2:
 
     if chooseOption == 6:
         while True:
-            userInput = input("Please enter the number: ")
+            userInput = input("> ")
 
             if userInput == "back":
                 os.execl(sys.executable, sys.executable, *sys.argv)
