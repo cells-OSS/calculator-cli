@@ -8,14 +8,14 @@ welcomeMessage = """
 ===============WELCOME===============
 
 0 = + - * /%
-1 = Finding the given exponent of the given number
+1 = Find the given exponent of the given number
 2 = Round a Number
-3= Find a percentage of a number
+3 = Find a percentage of a number
 4 = Finding the possible base and the exponent(s) of the given number
 5 = Finding the smallest possible n-th root of the given number
 6 = Find a given number's multipliers
 
-TIP: if you want to come back to this menu at any time, just type 'back'
+TIP: If you want to come back to this menu at any time, just type 'back'
 
 """
 print(welcomeMessage)
