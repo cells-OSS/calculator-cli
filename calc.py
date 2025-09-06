@@ -7,7 +7,7 @@ import operator
 welcomeMessage = """
 ===============WELCOME===============
 
-0 = + - * /%
+0 = Basic math expressions
 1 = Find the given exponent of the given number
 2 = Round a Number
 3 = Find a percentage of a number
@@ -49,7 +49,7 @@ while True:
                     right = _eval(node.right)
 
                     if isinstance(node.op, ast.Div):
-                        # Do quotient + remainder for "/"
+                        
                         quotient = left // right
                         remainder = left % right
                         return f"{left} ÷ {right} = {quotient} remainder {remainder}"
@@ -102,15 +102,15 @@ while True:
         exponent = float(secondInput)
         print(">", base ** exponent)
 
-if chooseOption == 2:
-    while True:
-        userInput = input("> ")
+    if chooseOption == 2:
+        while True:
+            userInput = input("> ")
 
-        if userInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            if userInput.lower() == "back":
+                os.execl(sys.executable, sys.executable, *sys.argv)
 
-        toRound = float(userInput)
-        print(">", round(toRound))
+            toRound = float(userInput)
+            print(">", round(toRound))
 
     if chooseOption == 3:
         while True:
