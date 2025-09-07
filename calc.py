@@ -10,10 +10,10 @@ welcomeMessage = """
 0 = Basic math expressions
 1 = Find the given exponent of the given number
 2 = Round a Number
-3 = Find a percentage of a number
-4 = Finding the possible base and the exponent(s) of the given number
+3 = Find the given percentage of a number
+4 = Finding the possible base(s) and the exponent(s) of the given number
 5 = Finding the smallest possible n-th root of the given number
-6 = Find a given number's multipliers
+6 = Find the given numbers multipliers
 
 TIP: If you want to come back to this menu at any time, just type 'back'
 
