@@ -15,8 +15,7 @@ welcomeMessage = """
 5 = Finding the smallest possible n-th root of the given number
 6 = Find the given numbers multipliers
 
-TIP: If you want to come back to this menu at any time, just type 'back'
-
+TIP: If you want to come back to this menu at any time, just type "back"
 """
 print(welcomeMessage)
 
