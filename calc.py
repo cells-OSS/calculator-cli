@@ -14,6 +14,7 @@ else:
     """
 
 menu = """
+
 0 = Basic math expressions
 1 = Find the given exponent of the given number
 2 = Round a Number
