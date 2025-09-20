@@ -222,14 +222,14 @@ while True:
             os.execl(sys.executable, sys.executable, *sys.argv)
 
         if chooseSetting == "0":
-            newWelcomeMessage = input("New welcome message: ")
+            new_welcomeMessage = input("New welcome message: ")
 
-        if newWelcomeMessage.lower() == "back":
+        if new_welcomeMessage.lower() == "back":
             os.execl(sys.executable, sys.executable, *sys.argv)
    
         if chooseSetting.lower() == "save":
             with open("welcome_message.conf", "wb") as configFile:
-                configFile.write(newWelcomeMessage.encode())
+                configFile.write(new_welcomeMessage.encode())
 
             print("Changes saved successfully!")
             input("Press any key to restart...")
