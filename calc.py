@@ -4,9 +4,16 @@ import math
 import ast
 import operator
 
-welcomeMessage = """
-===============WELCOME===============
 
+if os.path.exists("welcome_message.conf"):
+    with open("welcome_message.conf", "rb") as configFile:
+        welcomeMessage = configFile.read().decode()
+else:
+    welcomeMessage = """
+    ===============WELCOME===============
+    """
+
+menu = """
 0 = Basic math expressions
 1 = Find the given exponent of the given number
 2 = Round a Number
@@ -14,13 +21,14 @@ welcomeMessage = """
 4 = Finding the possible base(s) and the exponent(s) of the given number
 5 = Finding the smallest possible n-th root of the given number
 6 = Find the given numbers multipliers
+7 = Settings
 
 TIP: If you want to come back to this menu at any time, just type "back"
 """
-print(welcomeMessage)
+print(welcomeMessage, menu)
 
 chooseOption = int(
-    input("Which option would you like to choose(0/1/2/3/4/5/6)?: "))
+    input("Which option would you like to choose(0/1/2/3/4/5/6/7)?: "))
 
 while True:
 
@@ -197,3 +205,33 @@ while True:
                 result = num / answer
                 if result.is_integer():
                     print(result)
+
+    if chooseOption == 7:
+        settingsMenu = """
+    ===============SETTINGS===============
+
+    0 = Change welcome message
+    SAVE = Save changes
+    BACK = Go back to main menu(UNSAVED CHANGES WILL BE LOST)
+    """
+        print(settingsMenu)
+
+        chooseSetting = input("Which setting would you like to change(0)?: ")
+        
+        if chooseSetting.lower() == "back":
+            os.execl(sys.executable, sys.executable, *sys.argv)
+
+        if chooseSetting == "0":
+            newWelcomeMessage = input("New welcome message: ")
+
+        if newWelcomeMessage.lower() == "back":
+            os.execl(sys.executable, sys.executable, *sys.argv)
+   
+        if chooseSetting.lower() == "save":
+            with open("welcome_message.conf", "wb") as configFile:
+                configFile.write(newWelcomeMessage.encode())
+
+            print("Changes saved successfully!")
+            input("Press any key to restart...")
+            os.execl(sys.executable, sys.executable, *sys.argv)
+
