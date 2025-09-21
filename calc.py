@@ -57,7 +57,7 @@ while True:
                     right = _eval(node.right)
 
                     if isinstance(node.op, ast.Div):
-                        
+
                         quotient = left // right
                         remainder = left % right
                         return f"{left} ÷ {right} = {quotient} remainder {remainder}"
@@ -227,7 +227,7 @@ while True:
         print(settingsMenu)
 
         chooseSetting = input("Which setting would you like to change(0)?: ")
-        
+
         if chooseSetting.lower() == "back":
             subprocess.Popen([sys.executable] + sys.argv)
             sys.exit()
@@ -238,7 +238,7 @@ while True:
         if new_welcomeMessage.lower() == "back":
             subprocess.Popen([sys.executable] + sys.argv)
             sys.exit()
-   
+
         if chooseSetting.lower() == "save":
             with open("welcome_message.conf", "wb") as configFile:
                 configFile.write(new_welcomeMessage.encode())
@@ -247,4 +247,3 @@ while True:
             input("Press any key to restart...")
             subprocess.Popen([sys.executable] + sys.argv)
             sys.exit()
-
