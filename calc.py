@@ -1,6 +1,6 @@
 import os
 import sys
-import math
+import subprocess
 import ast
 import operator
 
@@ -87,7 +87,8 @@ while True:
         while True:
             expr = input("> ")
             if expr == "back":
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             try:
                 result = safe_eval(expr)
@@ -105,7 +106,8 @@ while True:
         secondInput = input("Exponent: ")
 
         if secondInput.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
 
         exponent = float(secondInput)
         print(">", base ** exponent)
@@ -115,7 +117,8 @@ while True:
             userInput = input("> ")
 
             if userInput.lower() == "back":
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             toRound = float(userInput)
             print(">", round(toRound))
@@ -124,15 +127,17 @@ while True:
         while True:
             firstInput = input("Number: ")
 
-            if firstInput.lower == "back":
-                os.execl(sys.executable, sys.executable, *sys.argv)
+            if firstInput.lower() == "back":
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             Number = float(firstInput)
 
             secondInput = input("Percentage: ")
 
-            if secondInput.lower == "back":
-                os.execl(sys.executable, sys.executable, *sys.argv)
+            if secondInput.lower() == "back":
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             Percentage = float(secondInput)
             print(">", Percentage / 100 * Number)
@@ -144,7 +149,8 @@ while True:
             found = False
 
             if number == "back":
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             number = int(number)
 
@@ -166,14 +172,16 @@ while True:
             num = input("Enter the number: ")
 
             if num == "back":
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             nInput = input("Enter the degree of the root: ")
 
             number = int(num)
 
             if nInput == "back":
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             n = int(nInput)
 
@@ -198,7 +206,8 @@ while True:
             userInput = input("> ")
 
             if userInput == "back":
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             num = int(userInput)
             for answer in range(1, num + 1):
@@ -220,13 +229,15 @@ while True:
         chooseSetting = input("Which setting would you like to change(0)?: ")
         
         if chooseSetting.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
 
         if chooseSetting == "0":
             new_welcomeMessage = input("New welcome message: ")
 
         if new_welcomeMessage.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
    
         if chooseSetting.lower() == "save":
             with open("welcome_message.conf", "wb") as configFile:
@@ -234,5 +245,6 @@ while True:
 
             print("Changes saved successfully!")
             input("Press any key to restart...")
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
 
