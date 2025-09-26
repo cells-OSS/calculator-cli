@@ -256,10 +256,11 @@ while True:
         0 = Turn on
         1 = Turn off
         """
-            
+
             print(figletWelcome)
-            figletOption = input("Which option would you like to choose(0/1)?: ")
-            
+            figletOption = input(
+                "Which option would you like to choose(0/1)?: ")
+
             if figletOption.lower() == "back":
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
@@ -272,7 +273,7 @@ while True:
                     input("Press any key to restart...")
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
-            
+
             if figletOption == "1":
                 with open("figlet.conf", "wb") as figlet_configFile:
                     figlet_configFile.write("False".encode())
