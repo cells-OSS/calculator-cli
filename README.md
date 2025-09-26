@@ -8,6 +8,7 @@ For an Android version of this, you can use an app like termux to emulate a Linu
 
 # PREREQUISITES
 Python (https://www.python.org/)
+pyfiglet (MacOS/Linux: pip3 install pyfiglet, Windows: pip install pyfiglet)
 
 # HOW TO USE?
 
