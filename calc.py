@@ -3,7 +3,7 @@ import sys
 import subprocess
 import ast
 import operator
-
+import pyfiglet
 
 if os.path.exists("welcome_message.conf"):
     with open("welcome_message.conf", "rb") as configFile:
@@ -12,6 +12,12 @@ else:
     welcomeMessage = """
     ===============WELCOME===============
     """
+
+if os.path.exists("figlet.conf"):
+    with open("figlet.conf", "rb") as figlet_configFile:
+        figlet_config = figlet_configFile.read().decode()
+        if figlet_config == "True":
+            welcomeMessage = pyfiglet.figlet_format(welcomeMessage)
 
 menu = """
 
@@ -221,12 +227,11 @@ while True:
     ===============SETTINGS===============
 
     0 = Change welcome message
-    SAVE = Save changes
-    BACK = Go back to main menu(UNSAVED CHANGES WILL BE LOST)
+    1 = Figlet welcome message
     """
         print(settingsMenu)
 
-        chooseSetting = input("Which setting would you like to change(0)?: ")
+        chooseSetting = input("Which setting would you like to change(0/1)?: ")
 
         if chooseSetting.lower() == "back":
             subprocess.Popen([sys.executable] + sys.argv)
@@ -235,15 +240,43 @@ while True:
         if chooseSetting == "0":
             new_welcomeMessage = input("New welcome message: ")
 
-        if new_welcomeMessage.lower() == "back":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
-
-        if chooseSetting.lower() == "save":
             with open("welcome_message.conf", "wb") as configFile:
                 configFile.write(new_welcomeMessage.encode())
 
-            print("Changes saved successfully!")
-            input("Press any key to restart...")
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
+
+        if chooseSetting == "1":
+            figletWelcome = """
+        ===============FIGLET===============
+
+        0 = Turn on
+        1 = Turn off
+        """
+            
+            print(figletWelcome)
+            figletOption = input("Which option would you like to choose(0/1)?: ")
+            
+            if figletOption.lower() == "back":
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
+
+            if figletOption == "0":
+                with open("figlet.conf", "wb") as figlet_configFile:
+                    figlet_configFile.write("True".encode())
+
+                    print("Changes saved successfully!")
+                    input("Press any key to restart...")
+                    subprocess.Popen([sys.executable] + sys.argv)
+                    sys.exit()
+            
+            if figletOption == "1":
+                with open("figlet.conf", "wb") as figlet_configFile:
+                    figlet_configFile.write("False".encode())
+
+                    print("Changes saved successfully!")
+                    input("Press any key to restart...")
+                    subprocess.Popen([sys.executable] + sys.argv)
+                    sys.exit()
