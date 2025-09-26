@@ -228,6 +228,7 @@ while True:
 
     0 = Change welcome message
     1 = Figlet welcome message
+    2 = Reset welcome message
     """
         print(settingsMenu)
 
@@ -280,3 +281,16 @@ while True:
                     input("Press any key to restart...")
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
+
+        if chooseSetting == "2":
+            if os.path.exists("welcome_message.conf"):
+                os.remove("welcome_message.conf")
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
+            else:
+                print("You haven't changed the welcome message yet!")
+                input("Press any key to restart...")
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
