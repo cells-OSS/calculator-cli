@@ -1,4 +1,4 @@
-# pynculator-cli
+# pyculator
 
 A simple calculator CLI app made with Python.
 
