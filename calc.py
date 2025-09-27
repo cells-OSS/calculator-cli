@@ -8,8 +8,8 @@ import requests
 from packaging import version
 
 
-
 __version__ = "v2.4"
+
 
 def get_latest_release_tag():
     try:
@@ -27,6 +27,7 @@ def is_update_available(current_version):
     latest = get_latest_release_tag()
     return version.parse(latest) > version.parse(current_version.lstrip("v"))
 
+
 def download_latest_script():
     latest_version = get_latest_release_tag()
     filename = f"pyculator-v{latest_version}.py"
@@ -36,12 +37,13 @@ def download_latest_script():
     with open(filename, "w", encoding="utf-8") as f:
         for line in lines:
             f.write(line.rstrip() + "\n")
-    print(f"Current version: {__version__}, Latest: v{get_latest_release_tag()}")
-    print(f"Downloaded update as '{filename}'. You can now safely delete the old version.")
+    print(
+        f"Current version: {__version__}, Latest: v{get_latest_release_tag()}")
+    print(
+        f"Downloaded update as '{filename}'. You can now safely delete the old version.")
 
     input("Press Enter to exit...")
     exit()
-
 
 
 if os.path.exists("welcome_message.conf"):
@@ -281,7 +283,8 @@ while True:
     """
         print(settingsMenu)
 
-        chooseSetting = input("Which setting would you like to change(0/1/2/3)?: ")
+        chooseSetting = input(
+            "Which setting would you like to change(0/1/2/3)?: ")
 
         if chooseSetting.lower() == "back":
             subprocess.Popen([sys.executable] + sys.argv)
@@ -289,7 +292,7 @@ while True:
 
         if chooseSetting == "0":
             new_welcomeMessage = input("New welcome message: ")
-            
+
             if new_welcomeMessage.lower() == "back":
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
