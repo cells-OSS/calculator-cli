@@ -71,14 +71,14 @@ if os.path.exists("auto_update.conf"):
 
 menu = """
 
-0 = Basic math expressions
-1 = Find the given exponent of the given number
-2 = Round a Number
-3 = Find the given percentage of a number
-4 = Finding the possible base(s) and the exponent(s) of the given number
-5 = Finding the smallest possible n-th root of the given number
-6 = Find the given numbers multipliers
-7 = Settings
+1 = Basic math expressions
+2 = Find the given exponent of the given number
+3 = Round a Number
+4 = Find the given percentage of a number
+5 = Finding the possible base(s) and the exponent(s) of the given number
+6 = Finding the smallest possible n-th root of the given number
+7 = Find the given numbers multipliers
+8 = Settings
 
 TIP: If you want to come back to this menu at any time, just type "back"
 """
@@ -89,7 +89,7 @@ chooseOption = int(
 
 while True:
 
-    if chooseOption == 0:
+    if chooseOption == 1:
         operators = {
             ast.Add: operator.add,
             ast.Sub: operator.sub,
@@ -152,7 +152,7 @@ while True:
             except Exception as e:
                 print("Error:", e)
 
-    if chooseOption == 1:
+    if chooseOption == 2:
         firstInput = input("Base: ")
 
         if firstInput.lower() == "back":
@@ -169,7 +169,7 @@ while True:
         exponent = float(secondInput)
         print(">", base ** exponent)
 
-    if chooseOption == 2:
+    if chooseOption == 3:
         while True:
             userInput = input("> ")
 
@@ -180,7 +180,7 @@ while True:
             toRound = float(userInput)
             print(">", round(toRound))
 
-    if chooseOption == 3:
+    if chooseOption == 4:
         while True:
             firstInput = input("Number: ")
 
@@ -199,7 +199,7 @@ while True:
             Percentage = float(secondInput)
             print(">", Percentage / 100 * Number)
 
-    if chooseOption == 4:
+    if chooseOption == 5:
         while True:
 
             number = input("> ")
@@ -224,7 +224,7 @@ while True:
             if not found:
                 print(f"{number} cannot be expressed")
 
-    if chooseOption == 5:
+    if chooseOption == 6:
         while True:
             num = input("Enter the number: ")
 
@@ -258,7 +258,7 @@ while True:
             else:
                 print(f"{n}-th root of {number} = {a} * {n}-th_root({b})")
 
-    if chooseOption == 6:
+    if chooseOption == 7:
         while True:
             userInput = input("> ")
 
@@ -273,25 +273,25 @@ while True:
                 if result.is_integer():
                     print(result)
 
-    if chooseOption == 7:
+    if chooseOption == 8:
         settingsMenu = """
     ===============SETTINGS===============
 
-    0 = Change welcome message
-    1 = Figlet welcome message
-    2 = Reset welcome message
-    3 = Change auto-update settings
+    1 = Change welcome message
+    2 = Figlet welcome message
+    3 = Reset welcome message
+    4 = Change auto-update settings
     """
         print(settingsMenu)
 
         chooseSetting = input(
-            "Which setting would you like to change(0/1/2/3)?: ")
+            "Which setting would you like to change(1/2/3/4)?: ")
 
         if chooseSetting.lower() == "back":
             subprocess.Popen([sys.executable] + sys.argv)
             sys.exit()
 
-        if chooseSetting == "0":
+        if chooseSetting == "1":
             new_welcomeMessage = input("New welcome message: ")
 
             if new_welcomeMessage.lower() == "back":
@@ -306,17 +306,17 @@ while True:
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
 
-        if chooseSetting == "1":
+        if chooseSetting == "2":
             figletWelcome = """
         ===============FIGLET===============
 
-        0 = Turn on
-        1 = Turn off
+        1 = Turn on
+        2 = Turn off
         """
 
             print(figletWelcome)
             figletOption = input(
-                "Which option would you like to choose(0/1)?: ")
+                "Which option would you like to choose(1/2)?: ")
 
             if figletOption.lower() == "back":
                 subprocess.Popen([sys.executable] + sys.argv)
@@ -331,7 +331,7 @@ while True:
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
 
-            if figletOption == "1":
+            if figletOption == "2":
                 with open("figlet.conf", "wb") as figlet_configFile:
                     figlet_configFile.write("False".encode())
 
@@ -340,7 +340,7 @@ while True:
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
 
-        if chooseSetting == "2":
+        if chooseSetting == "3":
             if os.path.exists("welcome_message.conf"):
                 os.remove("welcome_message.conf")
                 print("Changes saved successfully!")
@@ -353,23 +353,23 @@ while True:
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
 
-        if chooseSetting == "3":
+        if chooseSetting == "4":
             aUpdateMenu = """
     ===============AUTO-UPDATE===============
 
-    0 = Turn on
-    1 = Turn off
+    1 = Turn on
+    2 = Turn off
     """
 
             print(aUpdateMenu)
             aUpdateOption = input(
-                "Which option would you like to choose(0/1)?: ")
+                "Which option would you like to choose(1/2)?: ")
 
             if aUpdateOption.lower() == "back":
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
 
-            if aUpdateOption == "0":
+            if aUpdateOption == "1":
                 with open("auto_update.conf", "wb") as auto_update_configFile:
                     auto_update_configFile.write("True".encode())
 
@@ -378,7 +378,7 @@ while True:
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
 
-            if aUpdateOption == "1":
+            if aUpdateOption == "2":
                 with open("auto_update.conf", "wb") as auto_update_configFile:
                     auto_update_configFile.write("False".encode())
 
