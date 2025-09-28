@@ -156,7 +156,8 @@ while True:
         firstInput = input("Base: ")
 
         if firstInput.lower() == "back":
-            break
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
 
         base = float(firstInput)
         secondInput = input("Exponent: ")
