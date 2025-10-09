@@ -11,7 +11,7 @@ Python (https://www.python.org/)
 
 pyfiglet (macOS/Linux: pip3 install pyfiglet, Windows: pip install pyfiglet)
 
-requests (macOS/Linux: pip3 install requests, Windows: pip install pyfiglet)
+requests (macOS/Linux: pip3 install requests, Windows: pip install requests)
 
 
 # HOW TO USE?
