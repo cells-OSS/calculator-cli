@@ -8,7 +8,7 @@ import requests
 from packaging import version
 
 
-__version__ = "v2.5"
+__version__ = "v2.6"
 
 
 def get_latest_release_tag():
@@ -143,8 +143,7 @@ while True:
         while True:
             expr = input("> ")
             if expr == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             try:
                 result = safe_eval(expr)
@@ -156,15 +155,13 @@ while True:
         firstInput = input("Base: ")
 
         if firstInput.lower() == "back":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         base = float(firstInput)
         secondInput = input("Exponent: ")
 
         if secondInput.lower() == "back":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         exponent = float(secondInput)
         print(">", base ** exponent)
@@ -174,8 +171,7 @@ while True:
             userInput = input("> ")
 
             if userInput.lower() == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             toRound = float(userInput)
             print(">", round(toRound))
@@ -185,16 +181,14 @@ while True:
             firstInput = input("Number: ")
 
             if firstInput.lower() == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             Number = float(firstInput)
 
             secondInput = input("Percentage: ")
 
             if secondInput.lower() == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             Percentage = float(secondInput)
             print(">", Percentage / 100 * Number)
@@ -206,8 +200,7 @@ while True:
             found = False
 
             if number == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             number = int(number)
 
@@ -229,16 +222,14 @@ while True:
             num = input("Enter the number: ")
 
             if num == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             nInput = input("Enter the degree of the root: ")
 
             number = int(num)
 
             if nInput == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             n = int(nInput)
 
@@ -263,8 +254,7 @@ while True:
             userInput = input("> ")
 
             if userInput == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             num = int(userInput)
             for answer in range(1, num + 1):
@@ -288,23 +278,20 @@ while True:
             "Which setting would you like to change(1/2/3/4)?: ")
 
         if chooseSetting.lower() == "back":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "1":
             new_welcomeMessage = input("New welcome message: ")
 
             if new_welcomeMessage.lower() == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             with open("welcome_message.conf", "wb") as configFile:
                 configFile.write(new_welcomeMessage.encode())
 
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "2":
             figletWelcome = """
@@ -319,8 +306,7 @@ while True:
                 "Which option would you like to choose(1/2)?: ")
 
             if figletOption.lower() == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "0":
                 with open("figlet.conf", "wb") as figlet_configFile:
@@ -328,8 +314,7 @@ while True:
 
                     print("Changes saved successfully!")
                     input("Press any key to restart...")
-                    subprocess.Popen([sys.executable] + sys.argv)
-                    sys.exit()
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "2":
                 with open("figlet.conf", "wb") as figlet_configFile:
@@ -337,21 +322,19 @@ while True:
 
                     print("Changes saved successfully!")
                     input("Press any key to restart...")
-                    subprocess.Popen([sys.executable] + sys.argv)
-                    sys.exit()
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "3":
             if os.path.exists("welcome_message.conf"):
                 os.remove("welcome_message.conf")
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
+
             else:
                 print("You haven't changed the welcome message yet!")
                 input("Press any key to restart...")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "4":
             aUpdateMenu = """
@@ -366,8 +349,7 @@ while True:
                 "Which option would you like to choose(1/2)?: ")
 
             if aUpdateOption.lower() == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if aUpdateOption == "1":
                 with open("auto_update.conf", "wb") as auto_update_configFile:
@@ -375,8 +357,7 @@ while True:
 
                     print("Changes saved successfully!")
                     input("Press any key to restart...")
-                    subprocess.Popen([sys.executable] + sys.argv)
-                    sys.exit()
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if aUpdateOption == "2":
                 with open("auto_update.conf", "wb") as auto_update_configFile:
@@ -384,5 +365,4 @@ while True:
 
                     print("Changes saved successfully!")
                     input("Press any key to restart...")
-                    subprocess.Popen([sys.executable] + sys.argv)
-                    sys.exit()
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
