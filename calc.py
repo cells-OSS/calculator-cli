@@ -150,6 +150,8 @@ while True:
                 print("=", result)
             except Exception as e:
                 print("Error:", e)
+                input("Press any key to restart...")
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
     if chooseOption == 2:
         firstInput = input("Base: ")
@@ -366,3 +368,9 @@ while True:
                     print("Changes saved successfully!")
                     input("Press any key to restart...")
                     os.execv(sys.executable, [sys.executable] + sys.argv)
+        else:
+            input("Invalid option. Press any key to restart...")
+            os.execv(sys.executable, [sys.executable] + sys.argv)
+    else:
+        input("Invalid option. Press any key to restart...")
+        os.execv(sys.executable, [sys.executable] + sys.argv)
