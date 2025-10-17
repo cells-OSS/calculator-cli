@@ -1,6 +1,5 @@
 import os
 import sys
-import subprocess
 import ast
 import operator
 import pyfiglet
