@@ -292,11 +292,12 @@ while True:
 
         if chooseSetting == "1":
             new_welcomeMessage = input("New welcome message: ")
+            config_path = os.path.join(config_dir, "welcome_message.conf")
 
             if new_welcomeMessage.lower() == "back":
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
-            with open("welcome_message.conf", "wb") as configFile:
+            with open(config_path, "wb") as configFile:
                 configFile.write(new_welcomeMessage.encode())
 
                 print("Changes saved successfully!")
