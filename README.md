@@ -13,6 +13,8 @@ For an Android version of this, you can use an app like termux to emulate a Linu
 
 [requests](https://pypi.org/project/requests/)
 
+[packaging](https://pypi.org/project/packaging/)
+
 
 # HOW TO USE?
 
