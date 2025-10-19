@@ -335,9 +335,9 @@ while True:
                 with open("figlet.conf", "wb") as figlet_configFile:
                     figlet_configFile.write("False".encode())
 
-                    print("Changes saved successfully!")
-                    input("Press any key to restart...")
-                    os.execv(sys.executable, [sys.executable] + sys.argv)
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "3":
             if os.path.exists("welcome_message.conf"):
