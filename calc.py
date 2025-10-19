@@ -302,9 +302,9 @@ while True:
             with open(config_path, "wb") as configFile:
                 configFile.write(new_welcomeMessage.encode())
 
-                print("Changes saved successfully!")
-                input("Press any key to restart...")
-                os.execv(sys.executable, [sys.executable] + sys.argv)
+            print("Changes saved successfully!")
+            input("Press any key to restart...")
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "2":
             figletWelcome = """
@@ -326,9 +326,9 @@ while True:
                 with open("figlet.conf", "wb") as figlet_configFile:
                     figlet_configFile.write("True".encode())
 
-                    print("Changes saved successfully!")
-                    input("Press any key to restart...")
-                    os.execv(sys.executable, [sys.executable] + sys.argv)
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "2":
                 with open("figlet.conf", "wb") as figlet_configFile:
