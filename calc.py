@@ -322,8 +322,9 @@ while True:
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "1":
+                config_path = os.path.join(config_dir, "figlet.conf")
 
-                with open("figlet.conf", "wb") as figlet_configFile:
+                with open(config_path, "wb") as figlet_configFile:
                     figlet_configFile.write("True".encode())
 
                 print("Changes saved successfully!")
