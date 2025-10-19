@@ -375,12 +375,13 @@ while True:
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if aUpdateOption == "1":
-                with open("auto_update.conf", "wb") as auto_update_configFile:
+                config_path = os.path.join(config_dir, "auto_update.conf")
+                with open(config_path, "wb") as auto_update_configFile:
                     auto_update_configFile.write("True".encode())
 
-                    print("Changes saved successfully!")
-                    input("Press any key to restart...")
-                    os.execv(sys.executable, [sys.executable] + sys.argv)
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if aUpdateOption == "2":
                 with open("auto_update.conf", "wb") as auto_update_configFile:
