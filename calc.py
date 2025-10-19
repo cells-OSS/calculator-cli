@@ -319,7 +319,8 @@ while True:
             if figletOption.lower() == "back":
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
-            if figletOption == "0":
+            if figletOption == "1":
+
                 with open("figlet.conf", "wb") as figlet_configFile:
                     figlet_configFile.write("True".encode())
 
