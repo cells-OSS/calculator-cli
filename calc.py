@@ -346,8 +346,10 @@ while True:
                     os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "3":
-            if os.path.exists("welcome_message.conf"):
-                os.remove("welcome_message.conf")
+            config_path = os.path.join(config_dir, "welcome_message.conf")
+
+            if os.path.exists(config_path):
+                os.remove(config_path)
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
