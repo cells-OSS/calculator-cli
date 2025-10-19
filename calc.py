@@ -332,12 +332,18 @@ while True:
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "2":
-                with open("figlet.conf", "wb") as figlet_configFile:
-                    figlet_configFile.write("False".encode())
+                config_path = os.path.join(config_dir, "figlet.conf")
 
-                print("Changes saved successfully!")
-                input("Press any key to restart...")
-                os.execv(sys.executable, [sys.executable] + sys.argv)
+                if os.path.exists(config_path):
+                    os.remove(config_path)
+                    print("Changes saved successfully!")
+                    input("Press any key to restart...")
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
+                
+                else:
+                    print("Figlet welcome message is already turned off!")
+                    input("Press Enter to continue...")
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "3":
             if os.path.exists("welcome_message.conf"):
