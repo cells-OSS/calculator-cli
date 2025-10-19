@@ -49,6 +49,8 @@ if os.name == "nt":
 else:
     config_dir = os.path.expanduser("~/.config/pyculator")
 
+os.makedirs(config_dir, exist_ok=True)
+
 welcomeMessage_config_path = os.path.join(config_dir, "welcome_message.conf")
 figlet_config_path =  os.path.join(config_dir, "figlet.conf")
 auto_update_config_path = os.path.join(config_dir, "auto_update.conf")
