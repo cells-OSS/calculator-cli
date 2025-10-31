@@ -340,40 +340,22 @@ while True:
             figletWelcome = """
         ===============FIGLET===============
 
-        1 = Turn on
-        2 = Turn off
+        1 = Toggle figlet welcome message
         """
 
             print(figletWelcome)
             figletOption = input(
-                "Which option would you like to choose(1/2)?: ")
+                "Which option would you like to choose(1)?: ")
 
             if figletOption.lower() == "back":
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "1":
-                config_path = os.path.join(config_dir, "figlet.conf")
-
-                with open(config_path, "wb") as figlet_configFile:
-                    figlet_configFile.write("True".encode())
+                toggle_figlet()
 
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
-
-            if figletOption == "2":
-                config_path = os.path.join(config_dir, "figlet.conf")
-
-                if os.path.exists(config_path):
-                    os.remove(config_path)
-                    print("Changes saved successfully!")
-                    input("Press any key to restart...")
-                    os.execv(sys.executable, [sys.executable] + sys.argv)
-                
-                else:
-                    print("Figlet welcome message is already turned off!")
-                    input("Press Enter to continue...")
-                    os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "3":
             config_path = os.path.join(config_dir, "welcome_message.conf")
