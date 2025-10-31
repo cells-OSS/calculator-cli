@@ -1,6 +1,7 @@
 import os
 import sys
 import ast
+import json
 import operator
 import pyfiglet
 import requests
@@ -47,9 +48,25 @@ def download_latest_script():
 if os.name == "nt":
     config_dir = os.path.join(os.getenv("APPDATA"), "pyculator")
 else:
-    config_dir = os.path.expanduser("~/.config/pyculator")
+    config_dir = os.path.expanduser("~/.config/pyculator/")
 
-os.makedirs(config_dir, exist_ok=True)
+os.makedirs(config_dir, "config.json", exist_ok=True)
+
+def load_config():
+    with open(os.path.join(config_dir, "config.json"), "r") as f:
+        return json.load(f)
+
+def save_config(config):
+    with open(os.path.join(config_dir, "config.json"), "w") as f:
+        json.dump(config, f, indent=4)
+
+def toggle_auto_updates():
+    config = load_config()
+    
+    config["auto_updates"] = not config.get("auto_updates", True)
+    
+    save_config(config)
+    print(f"Auto updates are now {'ON' if config['auto_updates'] else 'OFF'}")
 
 welcomeMessage_config_path = os.path.join(config_dir, "welcome_message.conf")
 figlet_config_path =  os.path.join(config_dir, "figlet.conf")
