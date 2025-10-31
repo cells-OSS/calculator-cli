@@ -9,7 +9,7 @@ import requests
 from packaging import version
 
 
-__version__ = "v2.8"
+__version__ = "v2.9"
 
 
 def get_latest_release_tag():
