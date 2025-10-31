@@ -375,8 +375,7 @@ while True:
             aUpdateMenu = """
     ===============AUTO-UPDATE===============
 
-    1 = Turn on
-    2 = Turn off
+    1 = Toggle auto-updates
     """
 
             print(aUpdateMenu)
@@ -387,9 +386,7 @@ while True:
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if aUpdateOption == "1":
-                config_path = os.path.join(config_dir, "auto_update.conf")
-                with open(config_path, "wb") as auto_update_configFile:
-                    auto_update_configFile.write("True".encode())
+                toggle_auto_updates()
 
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
